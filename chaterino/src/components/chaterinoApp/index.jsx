@@ -1,10 +1,14 @@
 import React, {Fragment} from 'react';
+import Form from '../Principal/Form';
+import Login from '../Inicio/LogIn';
+import Registrar from '../Inicio/Register';
 
 
 const chaterinoApp = () => (
   <Fragment>
-    <h1> PRIMER COMPONENTE WEEEE </h1>
-    <h2> PLS funciona</h2>
+    <Form/>
+    <Login/>
+    <Registrar/>
   </Fragment>
 );
 

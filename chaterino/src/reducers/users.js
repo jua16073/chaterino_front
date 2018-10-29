@@ -26,9 +26,9 @@ const byId = (state = {}, action) => {
 }
 
 const order = (state = [], action) => {
-  switch (actino.type){
+  switch (action.type){
     case types.USER_CREATED:{
-      const {id} = actino.payload;
+      const {id} = action.payload;
       if (id in state){
         return state;
       }
