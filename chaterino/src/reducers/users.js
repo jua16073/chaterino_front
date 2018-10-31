@@ -53,6 +53,6 @@ export default users;
 
 export const getUser = (state, id) => state.byId[id];
 
-export const getusers = (state) => state.order.map(
+export const getUsers = (state) => state.order.map(
   id => getUser(state, id),
 );

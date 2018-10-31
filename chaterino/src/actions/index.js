@@ -3,12 +3,14 @@ import * as types from '../types';
 export const createUser = (
   id,
   nombre,
+  correo,
   contrasena,
 ) => ({
   type: types.USER_CREATED,
   payload:{
     id,
     nombre,
+    correo,
     contrasena,
   }
 });
@@ -27,11 +29,13 @@ export const verifyUser = (
 export const createChat = (
   id,
   title,
+  comments
 ) => ({
   type: types.CHAT_CREATED,
   payload: {
     id,
-    title
+    title,
+    comments
   }
 });
 

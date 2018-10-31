@@ -10,6 +10,23 @@ const byId = (state = {}, action) => {
         [id]: action.payload,
       };
     }
+    
+    case types.COMMENTED:{
+      const {idChat} = action.payload;
+      const chat = state[idChat];
+      const {comments} = chat;
+      const {id} = action.payload;
+      return {
+        ...state,
+        [idChat]:{
+          ...chat,
+          comments:{
+            ...comments,
+            id,
+          }
+        }
+      }
+    }
 
     default:
       return state;
@@ -38,3 +55,9 @@ const chats = combineReducers({
 });
 
 export default chats;
+
+export const getChat = (state, id) => state.byId[id];
+
+export const getChats = (state) => state.order.map (
+  id => getChat(state, id),
+);

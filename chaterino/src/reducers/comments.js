@@ -41,3 +41,9 @@ const comments = combineReducers({
 });
 
 export default comments;
+
+export const getComment = (state, id) => state.byId[id];
+
+export const getComments = (state) => state.order.map (
+  id => getComment(state, id)
+);
