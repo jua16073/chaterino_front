@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';*/
+import { BrowserRouter } from 'react-router-dom';
+
+
 import ChaterinoApp from './components/chaterinoApp';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
@@ -10,7 +12,9 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store = {store}>
-    <ChaterinoApp/>
+    <BrowserRouter>
+      <ChaterinoApp />
+    </BrowserRouter>  
   </Provider>,
   document.getElementById('root')
 );
