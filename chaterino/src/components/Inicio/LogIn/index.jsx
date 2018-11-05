@@ -1,5 +1,8 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+
+import Register from '../Register';
 
 class login extends React.Component{
   render () {
@@ -24,15 +27,23 @@ class login extends React.Component{
           }
         }>Login</button>
 
-        <button onClick= {prueba}
-        > Registrarse</button>
+        <nav>
+          <Link to="/register">
+            <button onClick= {prueba}
+            > Registrarse</button>
+          </Link>
+        </nav>
+        
+        <div>
+          <Route path="/register"  component = {Register} />
+        </div>
       </Fragment>
     )
   }
 }
 
 const prueba = () => {
-  console.log("Registrarse")
+  
 }
 
 export default connect(
