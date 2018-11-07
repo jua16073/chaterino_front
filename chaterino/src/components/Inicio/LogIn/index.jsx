@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import Register from '../Register';
+import * as selectors from '../../../reducers';
 
 class login extends React.Component{
   render () {
@@ -17,15 +18,20 @@ class login extends React.Component{
         <input type="password"
         ref = {node => {this.pass = node;} }/> <br/>
 
-        <button onClick={
-          () => {
-            onSubmit(
-              this.username.value,
-              this.pass.value
-            );
-            this.pass.value = "";
-          }
-        }>Login</button>
+        <nav>
+          <Link to = "/chats">
+            <button onClick={
+              () => {
+                onSubmit(
+                  this.username.value,
+                  this.pass.value
+                );
+                this.pass.value = "";
+              }
+            }>Login</button>
+          </Link>
+        </nav>
+        
 
         <nav>
           <Link to="/register">
@@ -48,9 +54,9 @@ const prueba = () => {
 
 export default connect(
   undefined,
-  dispatch => ({
+  (dispatch) => ({
     onSubmit(user, pass){
-      console.log("Login :D");
+      console.log("hey", user, pass);   
     }
   })
 )(login);

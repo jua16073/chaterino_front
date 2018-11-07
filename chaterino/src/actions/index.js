@@ -29,13 +29,15 @@ export const verifyUser = (
 export const createChat = (
   id,
   title,
+  tag,
   comments
 ) => ({
   type: types.CHAT_CREATED,
   payload: {
     id,
     title,
-    comments
+    tag,
+    comments,
   }
 });
 
@@ -63,4 +65,8 @@ export const comment = (
     idChat,
     body,
   }
+});
+
+export const fetchUser = () =>({
+  type: types.FETCH_USER,
 });

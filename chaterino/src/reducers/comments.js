@@ -19,31 +19,10 @@ const byId = (state = {}, action) => {
   }
 }
 
-const order = (state = [], action) => {
-  switch(action.type){
-    case types.COMMENTED:{
-      const {id} = action.payload;
-      return [
-        ...state,
-        id
-      ];
-    }
-
-    default:
-      return state;
-
-  }
-}
-
 const comments = combineReducers({
   byId,
-  order
 });
 
 export default comments;
 
 export const getComment = (state, id) => state.byId[id];
-
-export const getComments = (state) => state.order.map (
-  id => getComment(state, id)
-);

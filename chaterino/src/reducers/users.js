@@ -16,10 +16,6 @@ const byId = (state = {}, action) => {
       };
     }
 
-    case types.USER_VERIFIED:{
-      const {id} = action.payload;
-      return state;
-    }
     default:
       return state;
   }

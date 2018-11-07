@@ -3,3 +3,4 @@ export const USER_VERIFIED = "USER_VERIFIED";
 export const CHAT_CREATED = "CHAT_CREATED";
 export const CHAT_JOINED = "CHAT_JOINED";
 export const COMMENTED = "COMMENTED";
+export const FETCH_USER = "FETCH_USER";

@@ -1,5 +1,6 @@
 import React, {Fragment } from 'react';
 import {connect} from 'react-redux';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 
 import * as selectors from '../../../reducers';
@@ -23,16 +24,20 @@ class register extends React.Component{
         <input type="text"
         ref = {node => {this.contra = node;}}/> <br/>
 
-
-        <button onClick={
-          () => {
-            onSubmit(
-              this.nombre.value,
-              this.contra.value,
-              this.correo.value,
-            )
-          }
-        }>Registrar</button>
+        <nav>
+          <Link to='/'>
+            <button onClick={
+              () => {
+                onSubmit(
+                  this.nombre.value,
+                  this.contra.value,
+                  this.correo.value,
+                )
+              }
+            }>Registrar</button>
+          </Link>
+        </nav>
+        
       </Fragment>
     );
   }
@@ -42,7 +47,7 @@ export default connect(
   undefined,
   dispatch => ({
     onSubmit(nombre, contra, correo){
-      dispatch(actions.createUser(nombre, correo, contra));
+      dispatch(actions.createUser(0,nombre, correo, contra));
     }
   })
 )(register);

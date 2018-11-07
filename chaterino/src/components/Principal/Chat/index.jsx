@@ -2,6 +2,8 @@ import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
 import * as selectors from '../../../reducers';
+
+import Comments from '../Comments';
 const Chat = ({
   id,
   title,
@@ -12,6 +14,11 @@ const Chat = ({
       <h4>{title}</h4>
     </div>
   </Fragment>
+  /*
+   <div>
+      <Comments id = {id}/>
+    </div>
+   */
 );
 
 export default connect(

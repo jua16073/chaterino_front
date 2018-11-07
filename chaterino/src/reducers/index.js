@@ -20,6 +20,4 @@ export const getChats = (state) => fromChats.getChats(state.chats);
 
 export const getChat = (state, id) => fromChats.getChat(state.chats, id);
 
-export const getComments = (state) => fromComments.getComments(state.comments);
-
 export const getComment = (state, id) => fromComments.getComment(state.comments, id);

@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
+import * as actions from '../../../actions';
+
 
 class form extends React.Component{
   render() {
@@ -35,8 +37,8 @@ class form extends React.Component{
 export default connect(
   undefined,
   dispatch => ({
-    onSubmit(){
-      console.log("hola");
+    onSubmit(titulo, tag){
+      dispatch(actions.createChat(0,titulo,tag,[]) )
     }
   })
 )(form);
