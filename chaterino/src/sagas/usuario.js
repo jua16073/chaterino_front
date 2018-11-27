@@ -25,7 +25,7 @@ function addUser (nombre, contra, correo) {
 function* callAddUser (action){
   const {nombre, contrasena, correo} = action.payload;
   try{
-    const result = yield call (addUser, nombre,correo, contrasena);
+    const result = yield call (addUser, nombre, contrasena, correo);
     console.log(result);
     yield put (actions.userCreated());
     console.log("termino?");
