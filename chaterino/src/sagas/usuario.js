@@ -15,10 +15,7 @@ function addUser (nombre, contra) {
   }
   let pls
     pls =  fetch(url, fetchData)
-    .then((data) => {
-      console.log(data);
-      return JSON.parse(data.text);
-    })
+    .then((data) => data.json())
     .catch((error) => {console.log(error);
     pls = error});
   console.log(pls);
@@ -32,6 +29,7 @@ function* callAddUser (action){
     const result = yield call (addUser, nombre, contrasena);
     console.log(result);
     yield put (actions.userCreated());
+    console.log("termino?");
   }
   catch(err){
     console.log("fashó");
