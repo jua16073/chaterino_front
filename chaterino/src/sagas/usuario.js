@@ -4,13 +4,13 @@ import * as actions from '../actions';
 import {request, reject} from 'superagent';
 
 
-function addUser (nombre, contra) {
+function addUser (nombre, contra, correo) {
   const url = 'http://127.0.0.1:8000/auth/users/create/';
   console.log("nombre: "+nombre+" contra: "+contra);
-  let data = {username:nombre, password:contra}
+  let data = {username:nombre, password:contra, email:correo}
   let fetchData = {
     method:'POST',
-    body:{username: nombre, password: contra},
+    body:data,
     headers: new Headers(),
   }
   let pls
@@ -23,10 +23,10 @@ function addUser (nombre, contra) {
 }
 
 function* callAddUser (action){
-  const {nombre, contrasena} = action.payload;
+  const {nombre, contrasena, correo} = action.payload;
   try{
     console.log("hey corriendo pls");
-    const result = yield call (addUser, nombre, contrasena);
+    const result = yield call (addUser, nombre,correo, contrasena);
     console.log(result);
     yield put (actions.userCreated());
     console.log("termino?");
