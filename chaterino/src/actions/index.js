@@ -33,7 +33,7 @@ export const verifyUser = (
   }
 });
 
-export const userVeridied = (
+export const userVerified = (
   token
 ) => ({
   type: types.USER_VERIFIED_DONE,

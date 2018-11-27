@@ -47,6 +47,7 @@ function* addUserSaga (){
 function getUser ({nombre, contrasena}) {
   const url = 'http://127.0.0.1:8000/auth/token/create/';
   let data = {username:nombre, password:contrasena}
+  console.log(data);
   let fetchData = {
     method:'GET',
     body:JSON.stringify(data),
@@ -64,6 +65,7 @@ function getUser ({nombre, contrasena}) {
 function* callGetUser (action){
   const {user, contra} = action.payload;
   try{
+    console.log("getUser empezado");
     const result = yield call (getUser, user, contra);
     console.log(result);
     yield put (actions.userVeridied(result));
@@ -79,8 +81,6 @@ function* getUserSaga (){
 }
 
 export default function* root(){
-  yield[
-    fork(addUserSaga),
-    fork(getUserSaga),
-  ]
+  yield(addUserSaga);
+  yield(getUserSaga);
 }
