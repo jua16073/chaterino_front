@@ -20,6 +20,7 @@ function* callAddUser (action){
     yield put ({type: Types.ADD_USER_DONE}, result);
   }
   catch(err){
+    console.log("fashó");
     yield call(reject);
   }
 }
