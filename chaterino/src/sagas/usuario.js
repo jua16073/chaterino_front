@@ -14,18 +14,14 @@ function addUser (nombre, contra) {
     headers: new Headers(),
   }
   let pls
-  try{
     pls =  fetch(url, fetchData)
     .then((data) => {
       console.log(data);
       return JSON.parse(data.text);
-    });
-  }
-  catch(err){
-    console.log(err);
-    pls =  "halp";
-  }
-  console.log("nani2");
+    })
+    .catch((error) => {console.log(error);
+    pls = error});
+  console.log(pls);
   return pls;
 }
 
