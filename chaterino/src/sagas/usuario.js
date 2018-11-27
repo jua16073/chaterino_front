@@ -1,14 +1,15 @@
 import {call, put, takeEvery, takeLatest, take, fork} from 'redux-saga/effects';
 import * as Types from '../types';
+import * as actions from '../actions';
 import {request, reject} from 'superagent';
 
 
-function addUser (action) {
-  console.log("naaaaaniiii");
+function addUser (nombre, contra) {
   const url = 'http://127.0.0.1:8000/auth/users/create/';
+  console.log("nombre: "+nombre+" contra: "+contra);
   return request
     .post(url)
-    .send({username:action.nombre, password:action.contrasena})
+    .send({username:nombre, password:contra})
     .then((data) => {
       return JSON.parse(data.text)
     });
@@ -16,11 +17,12 @@ function addUser (action) {
 
 function* callAddUser (action){
   console.log("Saga Corriendo");
+  const {nombre, contrasena} = action.payload;
   try{
     console.log("halp");
-    const result = yield call (addUser, action);
+    const result = yield call (addUser, nombre, contrasena);
     console.log(result);
-    yield put ({type: Types.ADD_USER_DONE}, result);
+    yield put (actions.userCreated(result));
   }
   catch(err){
     console.log("fashó");

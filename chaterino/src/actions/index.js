@@ -15,6 +15,15 @@ export const createUser = (
   }
 });
 
+export const userCreated = (
+  text
+) => ({
+  type: types.ADD_USER_DONE,
+  payload: {
+    text, 
+  }
+})
+
 export const verifyUser = (
   nombre,
   contrasena
