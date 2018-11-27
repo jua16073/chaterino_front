@@ -10,15 +10,13 @@ function addUser (nombre, contra, correo) {
   console.log(data);
   let fetchData = {
     method:'POST',
-    body:data,
+    body:JSON.stringify(data),
     headers: new Headers(),
   }
   let pls
     pls =  fetch(url, fetchData)
     .then((data) => data.json())
-    .catch((error) => {console.log(error);
-    pls = error});
-  console.log(pls);
+    .catch((error) => {console.log(error)});
   return pls;
 }
 
