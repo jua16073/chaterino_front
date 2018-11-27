@@ -10,7 +10,7 @@ function addUser (nombre, contra) {
   let data = {username:nombre, password:contra}
   let fetchData = {
     method:'POST',
-    body:data,
+    body:{username: nombre, password: contra},
     headers: new Headers(),
   }
   let pls
