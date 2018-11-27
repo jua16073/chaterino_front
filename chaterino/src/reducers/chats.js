@@ -3,6 +3,15 @@ import * as types from '../types';
 
 const byId = (state = {}, action) => {
   switch(action.type){
+    case types.CHAT_CREATED_DONE:{
+      const {id} = action.payload;
+      return {
+        ...state,
+        [id]: {
+          ...action.payload
+        }
+      }
+    }
 
     case types.COMMENTED:{
       const {idChat} = action.payload;

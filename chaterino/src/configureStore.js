@@ -17,7 +17,6 @@ export const composeEnhancers =
 
 const enhancer = composeEnhancers(
   applyMiddleware(sagaMiddleware),
-  // other store enhancers if any
 );
 
 

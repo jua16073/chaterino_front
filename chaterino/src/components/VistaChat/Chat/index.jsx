@@ -35,7 +35,7 @@ const ChatP = ({
 
 export default connect(
   (state, {id})=>({
-    ...selectors.getChat(state, id),
+    ...selectors.getChat(state, state.match.params.id),
   }),
   undefined, 
 )(ChatP);

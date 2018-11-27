@@ -7,7 +7,7 @@ import {request, reject} from 'superagent';
 function addUser (nombre, contra, correo) {
   const url = 'http://127.0.0.1:8000/api/chats/users/create/';
   console.log("nombre: "+nombre+" contra: "+contra);
-  let data = {username:nombre, password:contra, email:correo}
+  let data = {"username":nombre, "password":contra, "email":correo}
   let fetchData = {
     method:'POST',
     body:data,
