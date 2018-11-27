@@ -19,6 +19,9 @@ const ChatP = ({
     <div >
       <h4>{title}</h4>
       <div>
+        {
+          console.log(match.params.id)
+        }
       
       <CommentForm />
     </div>

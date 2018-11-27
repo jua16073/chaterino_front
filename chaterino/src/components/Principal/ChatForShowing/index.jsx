@@ -10,6 +10,7 @@ import ChatP from '../../VistaChat/Chat';
 const ChatList = ({
   id,
   title,
+  match
 }
 ) => (
   <Fragment>
@@ -21,6 +22,7 @@ const ChatList = ({
     {
       console.log("el id deberia de ser: "+id)
     }
+
     <Route path={`chats/${id}`} render= {() =><ChatP key = {id} id = {id}/>} />
 
   </Fragment>

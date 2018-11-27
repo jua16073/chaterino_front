@@ -15,7 +15,7 @@ function* callAddChat (action){
   try{
     const result = yield call (addChat, action);
     console.log(result);
-    yield put ({type: 'ADD_USER_DONE'}, result);
+    yield put ({type: Types.CHAT_CREATED_DONE}, result);
   }
   catch(err){
     yield call(reject);

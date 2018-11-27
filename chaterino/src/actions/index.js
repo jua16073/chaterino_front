@@ -66,7 +66,3 @@ export const comment = (
     body,
   }
 });
-
-export const fetchUser = () =>({
-  type: types.FETCH_USER,
-});

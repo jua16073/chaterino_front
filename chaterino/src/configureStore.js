@@ -27,7 +27,7 @@ const configureStore = () => {
     reducer,
     enhancer
   );
-  //sagaMiddleware.run(mainsaga);
+  sagaMiddleware.run(mainsaga);
   return store;
 };
 /* eslint-enable */

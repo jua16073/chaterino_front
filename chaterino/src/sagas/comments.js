@@ -15,7 +15,7 @@ function* callAddComment (action){
   try{
     const result = yield call (addComment, action);
     console.log(result);
-    yield put ({type: 'ADD_USER_DONE'}, result);
+    yield put ({type: Types.COMMENTED_DONE}, result);
   }
   catch(err){
     yield call(reject);

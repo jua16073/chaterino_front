@@ -4,9 +4,10 @@ import {request, reject} from 'superagent';
 
 
 function addUser (action) {
-  const url = 'POST http://127.0.0.1:8000/api/users/${action.name}';
+  const url = 'http://127.0.0.1:8000/auth/users/create/';
   return request
-    .get(url)
+    .post(url)
+    .send({username:action.nombre, password:action.contrasena})
     .then((data) => {
       return JSON.parse(data.text)
     });
@@ -16,7 +17,7 @@ function* callAddUser (action){
   try{
     const result = yield call (addUser, action);
     console.log(result);
-    yield put ({type: 'ADD_USER_DONE'}, result);
+    yield put ({type: Types.ADD_USER_DONE}, result);
   }
   catch(err){
     yield call(reject);
@@ -41,7 +42,7 @@ function* callGetUser (action){
   try{
     const result = yield call (getUser, action);
     console.log(result);
-    yield put ({type: 'ADD_USER_DONE'}, result);
+    yield put ({type: Types.USER_VERIFIED_DONE}, result);
   }
   catch(err){
     yield call(reject);
@@ -49,7 +50,7 @@ function* callGetUser (action){
 }
 
 function* getUserSaga (){
-  yield* takeEvery(Types.FETCH_USER, callGetUser);
+  yield* takeEvery(Types.USER_VERIFIED, callGetUser);
 }
 
 export default function* root(){
