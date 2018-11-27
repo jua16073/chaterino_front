@@ -3,7 +3,7 @@ import {request, reject} from 'superagent';
 import * as Types from '../types';
 
 function addChat (action) {
-  const url = 'POST http://127.0.0.1:8000/api/users/${action.name}';
+  const url = 'http://127.0.0.1:8000/api/users/${action.name}';
   return request
     .get(url)
     .then((data) => {

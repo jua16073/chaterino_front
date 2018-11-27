@@ -7,22 +7,35 @@ import {request, reject} from 'superagent';
 function addUser (nombre, contra) {
   const url = 'http://127.0.0.1:8000/auth/users/create/';
   console.log("nombre: "+nombre+" contra: "+contra);
-  return request
-    .post(url)
-    .send({username:nombre, password:contra})
+  let data = {username:nombre, password:contra}
+  let fetchData = {
+    method:'POST',
+    body:data,
+    headers: new Headers(),
+  }
+  let pls
+  try{
+    pls =  fetch(url, fetchData)
     .then((data) => {
-      return JSON.parse(data.text)
+      console.log(data);
+      return JSON.parse(data.text);
     });
+  }
+  catch(err){
+    console.log(err);
+    pls =  "halp";
+  }
+  console.log("nani2");
+  return pls;
 }
 
 function* callAddUser (action){
-  console.log("Saga Corriendo");
   const {nombre, contrasena} = action.payload;
   try{
-    console.log("halp");
+    console.log("hey corriendo pls");
     const result = yield call (addUser, nombre, contrasena);
     console.log(result);
-    yield put (actions.userCreated(result));
+    yield put (actions.userCreated());
   }
   catch(err){
     console.log("fashó");
@@ -52,7 +65,7 @@ function* callGetUser (action){
     yield put ({type: Types.USER_VERIFIED_DONE}, result);
   }
   catch(err){
-    yield call(reject);
+    console.log("help")
   }
 }
 
