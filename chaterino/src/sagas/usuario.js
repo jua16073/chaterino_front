@@ -10,7 +10,7 @@ function addUser (nombre, contra, correo) {
   console.log(data);
   let fetchData = {
     method:'POST',
-    body:JSON.stringify(data),
+    body:data.json(),
     headers: new Headers(),
   }
   let pls
