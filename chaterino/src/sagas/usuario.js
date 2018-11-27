@@ -44,24 +44,32 @@ function* addUserSaga (){
 ///////////////////////////////////////////////////////////////////////////
 //getUser
 
-function getUser (action) {
-  const url = 'GET http://127.0.0.1/users/${action.nombre}';
-  return request
-    .get(url)
-    .then((data) => {
-      return JSON.parse(data.text)
-    })
+function getUser ({nombre, contrasena}) {
+  const url = 'http://127.0.0.1:8000/auth/token/create/';
+  let data = {username:nombre, password:contrasena}
+  let fetchData = {
+    method:'GET',
+    body:JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  return respuesta =fetch(url, fetchData)
+    .then((data) => data.json())
+    .catch((error) => {console.log(error)});
 }
 
 
 function* callGetUser (action){
+  const {user, contra} = action.payload;
   try{
-    const result = yield call (getUser, action);
+    const result = yield call (getUser, user, contra);
     console.log(result);
-    yield put ({type: Types.USER_VERIFIED_DONE}, result);
+    yield put (actions.userVeridied(result));
   }
   catch(err){
-    console.log("help")
+    console.log("Verifiacion fallo");
+    console.log(err);
   }
 }
 

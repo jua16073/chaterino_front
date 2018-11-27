@@ -33,6 +33,15 @@ export const verifyUser = (
   }
 });
 
+export const userVeridied = (
+  token
+) => ({
+  type: types.USER_VERIFIED_DONE,
+  payload:{
+    token,
+  }
+}) 
+
 export const createChat = (
   id,
   title,
