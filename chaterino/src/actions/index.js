@@ -30,7 +30,7 @@ export const createChat = (
   id,
   title,
   tag,
-  comments
+  comments,
 ) => ({
   type: types.CHAT_CREATED,
   payload: {

@@ -24,7 +24,6 @@ class form extends React.Component{
               this.title.value,
               this.tags.value
             );
-            console.log("hola");
             this.title.value = "";
             this.tags.value = "";
           }

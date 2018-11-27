@@ -3,7 +3,7 @@ import * as types from '../types';
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-    case types.USER_CREATED: {
+    case types.USER_VERIFIED: {
       const {id} = action.payload;
       if (id in state){
         return state;

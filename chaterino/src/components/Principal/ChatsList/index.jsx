@@ -2,7 +2,9 @@ import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
 import * as selectors from '../../../reducers';
-import Chat from '../Chat';
+import Chat from '../ChatForShowing';
+
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 const Lista = ({chats = []}) => (
   <Fragment>
@@ -10,7 +12,9 @@ const Lista = ({chats = []}) => (
     <div>
       {
         chats.length > 0 ?
-        chats.map(({id}) => <Chat key ={id} id = {id} /> )
+        chats.map(({id}) =>
+        <Chat key ={id} id = {id} /> 
+         )
         : <li>No hay chats</li>
       }
     </div>

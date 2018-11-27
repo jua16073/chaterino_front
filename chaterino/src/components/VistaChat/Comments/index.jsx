@@ -6,13 +6,13 @@ import Comment from '../Comment';
 import * as selectors from '../../../reducers';
 
 const comments = ({
-  idChat,
   comments = []
 }) => (
   <div>
     {
       comments.length > 0 ?
-      comments.map (({id}) => <Comment  key = {id} id ={id} />)
+      comments.map (({id}) =>
+       <Comment  key = {id} id ={id} />)
       : <li>Sin comentarios</li>
     }
   </div>

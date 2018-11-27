@@ -26,7 +26,7 @@ class CommentForm extends React.Component{
 
 export default connect(
   undefined,
-  dipatch => ({
+  dispatch => ({
     onSubmit(body){
       dispatch(actions.comment(0, body));
     }

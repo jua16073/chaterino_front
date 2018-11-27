@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 
 import ChaterinoApp from './components/chaterinoApp';
@@ -13,7 +13,7 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store = {store}>
     <BrowserRouter>
-      <ChaterinoApp />
+      <Route path="/" component={ChaterinoApp}/>
     </BrowserRouter>  
   </Provider>,
   document.getElementById('root')

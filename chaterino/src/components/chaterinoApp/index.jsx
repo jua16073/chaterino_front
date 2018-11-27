@@ -3,6 +3,7 @@ import Form from '../Principal/Form';
 import Login from '../Inicio/LogIn';
 import Registrar from '../Inicio/Register';
 import ChatList from '../Principal/ChatsList';
+import Chat from '../VistaChat/Chat';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import './app.css';
@@ -14,7 +15,8 @@ const chaterinoApp = () => (
     <div className="app">
       <Route exact path="/" component={Login}/>
       <Route path = "/register" component={Registrar}/>
-      <Route path = "/chats" component ={Home}/> 
+      <Route path = "/chats" exact = {true} component= {Home}/> 
+      <Route path = "/chats/:id" component={Chat}/>
     </div>
     
   </Fragment>
