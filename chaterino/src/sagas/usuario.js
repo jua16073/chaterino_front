@@ -54,6 +54,7 @@ function getUser ({nombre, contrasena}) {
       'Content-Type': 'application/json',
     },
   }
+  let respuesta;
   return respuesta =fetch(url, fetchData)
     .then((data) => data.json())
     .catch((error) => {console.log(error)});
