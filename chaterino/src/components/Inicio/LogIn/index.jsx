@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './home.css'
 
 import Register from '../Register';
+import * as actions from '../../../actions';
 import * as selectors from '../../../reducers';
 
 class login extends React.Component{
@@ -60,7 +61,7 @@ export default connect(
   undefined,
   (dispatch) => ({
     onSubmit(user, pass){
-      console.log("hey", user, pass);   
+      dispatch(actions.verifyUser(user,pass))
     }
   })
 )(login);

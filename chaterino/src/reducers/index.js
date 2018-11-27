@@ -14,8 +14,6 @@ export default reducer;
 
 export const getAuth = (state) => fromUsers.getAuth(state.users);
 
-export const getUsers = (state) => fromUsers.getUsers(state.users);
-
 export const getUser = (state, id) => fromUsers.getUser(state.users, id);
 
 export const getChats = (state) => fromChats.getChats(state.chats);
