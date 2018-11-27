@@ -7,8 +7,6 @@ import CommentSaga from './comments';
 
 export default function* root() {
   yield [
-    fork[ChatSaga],
     fork[UsuarioSaga],
-    fork[CommentSaga],
   ]
 }

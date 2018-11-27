@@ -4,6 +4,7 @@ import reducer from './reducers';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension'; 
 import mainsaga from './sagas';
+import userSaga from './sagas/usuario';
 const sagaMiddleware = createSagaMiddleware();
 
 
@@ -27,7 +28,7 @@ const configureStore = () => {
     reducer,
     enhancer
   );
-  sagaMiddleware.run(mainsaga);
+  sagaMiddleware.run(userSaga);
   return store;
 };
 /* eslint-enable */

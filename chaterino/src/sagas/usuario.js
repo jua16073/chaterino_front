@@ -4,6 +4,7 @@ import {request, reject} from 'superagent';
 
 
 function addUser (action) {
+  console.log("naaaaaniiii");
   const url = 'http://127.0.0.1:8000/auth/users/create/';
   return request
     .post(url)
@@ -14,7 +15,9 @@ function addUser (action) {
 }
 
 function* callAddUser (action){
+  console.log("Saga Corriendo");
   try{
+    console.log("halp");
     const result = yield call (addUser, action);
     console.log(result);
     yield put ({type: Types.ADD_USER_DONE}, result);
@@ -26,7 +29,8 @@ function* callAddUser (action){
 }
 
 function* addUserSaga (){
-  yield* takeEvery(Types.USER_CREATED, callAddUser);
+  console.log("AddUserSaga");
+  yield takeEvery(Types.USER_CREATED, callAddUser);
 }
 
 function getUser (action) {
