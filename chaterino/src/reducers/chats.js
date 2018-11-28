@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import * as types from '../types';
-import uuid from 'uuid-v4';
 
 const byId = (state = {}, action) => {
   switch(action.type){
@@ -16,7 +15,7 @@ const byId = (state = {}, action) => {
 
     case types.CHAT_CREATED_DONE:{
       const {nId, oId} = action.payload;
-      let newState = {...state};
+      let newState = {state};
       newState = delete newState[oId];
       return{
         ...newState,
@@ -28,7 +27,7 @@ const byId = (state = {}, action) => {
     
       case types.CHAT_CREATED_FAILED:{
         const {oId} = action.payload;
-        let newState = {...state};
+        let newState = {state};
         newState = delete newState[oId];
         return {
           newState,
@@ -69,7 +68,7 @@ const order = (state = [],action) => {
 
     case types.CHAT_CREATED_DONE:{
       const {oId, nId} = action.payload;
-      let newState = [...state];
+      let newState = [state];
       newState = delete newState[oId];
       return [
         ...newState,
@@ -79,7 +78,7 @@ const order = (state = [],action) => {
 
     case types.CHAT_CREATED_FAILED:{
       const {oId} = action.payload;
-      let newState = [...state];
+      let newState = [state];
       newState = delete newState[oId];
       return[
         ...newState,
