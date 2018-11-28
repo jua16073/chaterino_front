@@ -5,8 +5,10 @@ import * as actions from '../actions';
 function addChat (titulo, token) {
   const url = 'http://127.0.0.1:8000/api/chats/';
   let data = {topico:titulo, Authorization: "Token "+token}
-  console.log("el token es: "+token);
-  console.log("la data a mandar es: "+data);
+  console.log("el token es: ");
+  console.log(token);
+  console.log("la data a mandar es:");
+  console.log(data);
   let fetchData = {
     method:'POST',
     body:JSON.stringify(data),
