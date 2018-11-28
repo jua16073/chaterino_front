@@ -31,7 +31,8 @@ function* callAddChat (action){
   const oId = id;
   try{
     const result = yield call (addChat, title, token);
-    console.log("El resultado es: "+result);
+    console.log("El resultado es: ");
+    console.log(result);
     const {id, topico} = result;
     yield put (actions.addChatState(id,oId,topico,token));
     console.log("chat agregado (?)");
