@@ -3,7 +3,7 @@ import * as Types from '../types';
 import * as actions from '../actions';
 
 function addChat (titulo, token) {
-  const url = 'http://127.0.0.1:8000/api/chats/users/create/';
+  const url = 'http://127.0.0.1:8000/api/chats/';
   let data = {topico:titulo, Authorization: "Token "+token}
   console.log(data);
   let fetchData = {
@@ -23,16 +23,19 @@ function addChat (titulo, token) {
 //dueno, url , topico, id
 
 function* callAddChat (action){
-  const {titulo, token} = action.payload;
+  const {id,titulo, token} = action.payload;
+  const oId = id;
   try{
     const result = yield call (addChat, titulo, token);
     console.log(result);
-    yield put (actions.userCreated());
-    console.log("termino?");
+    const {id, topico} = result;
+    yield put (actions.addChatState(id,oId,topico,token));
+    console.log("chat agregado (?)");
   }
   catch(err){
-    console.log("fashó");
+    console.log("fashó nuevo shat");
     console.log(err);
+    yield put(actions.removeChatState(oId));
   }
 }
 

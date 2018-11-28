@@ -7,6 +7,7 @@ export const LOG_OUT = "LOG_OUT";
 /////////////////////////////////////////////////////
 export const CHAT_CREATED = "CHAT_CREATED";
 export const CHAT_CREATED_DONE = "CHAT_CREATED_DONE";
+export const CHAT_CREATED_FAILED = "CHAT_CREATED_FAILED";
 export const CHAT_JOINED = "CHAT_JOINED";
 
 /////////////////////////////////////////////////////

@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
+import uuid from 'uuid-v4';
 
 import * as actions from '../../../actions';
 import * as selectors from '../../../reducers';
@@ -9,7 +10,7 @@ class form extends React.Component{
   render() {
     const {onSubmit} = this.props;
     const {token} = this.props;
-    console.log("el token es: "+ token);
+    //console.log("el token es: "+ token);
     return (
       <Fragment>
         <h3>Titulo</h3><br/>
@@ -40,8 +41,8 @@ export default connect(
     selectors.getToken(state)
   ),
   (dispatch) => ({
-    onSubmit(titulo, tok){
-      dispatch(actions.createChat(titulo,tok));
+    onSubmit(titulo, token){
+      dispatch(actions.createChat(uuid(),token,titulo));
     }
   })
 )(form);

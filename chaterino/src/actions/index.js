@@ -43,15 +43,41 @@ export const userVerified = (
 }) 
 
 export const createChat = (
+  id,
   token,
   title
 ) => ({
   type: types.CHAT_CREATED,
   payload: {
+    id,
     token,
     title
   }
 });
+
+export const addChatState = (
+  nId,
+  oId,
+  title,
+  token,
+) => ({
+  type: types.CHAT_CREATED_DONE,
+  payload:{
+    nId,
+    oId,
+    title,
+    token,
+  }
+});
+
+export  const removeChatState = (
+  oId,
+) => ({
+  type: types.CHAT_CREATED_FAILED,
+  payload:{
+    oId,
+  }
+})
 
 export const joinChat = (
   idUsuario,
@@ -78,3 +104,7 @@ export const comment = (
     body,
   }
 });
+
+//commentToState
+
+//failedCommentToState

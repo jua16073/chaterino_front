@@ -20,7 +20,7 @@ const ChatList = ({
       </Link>
     </div>
     {
-      console.log("el id deberia de ser: "+id)
+      console.log("el id deberia de ser: "+id+ " y el titulo: "+title)
     }
 
     <Route path={`chats/${id}`} render= {() =><ChatP key = {id} id = {id}/>} />
