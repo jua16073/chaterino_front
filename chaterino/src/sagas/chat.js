@@ -2,7 +2,8 @@ import {call, put, takeEvery, fork} from 'redux-saga/effects';
 import * as Types from '../types';
 import * as actions from '../actions';
 
-function addChat (titulo, token) {
+function addChat (titulo, key) {
+  const {token} = key;
   const url = 'http://127.0.0.1:8000/api/chats/';
   let data = {topico:titulo, Authorization: "Token "+token}
   console.log("el token es: ");
