@@ -5,7 +5,8 @@ import * as actions from '../actions';
 function addChat (titulo, token) {
   const url = 'http://127.0.0.1:8000/api/chats/';
   let data = {topico:titulo, Authorization: "Token "+token}
-  console.log(data);
+  console.log("el token es: "+token);
+  console.log("la data a mandar es: "+data);
   let fetchData = {
     method:'POST',
     body:JSON.stringify(data),
@@ -23,11 +24,11 @@ function addChat (titulo, token) {
 //dueno, url , topico, id
 
 function* callAddChat (action){
-  const {id,titulo, token} = action.payload;
+  const {id,token, title} = action.payload;
   const oId = id;
   try{
-    const result = yield call (addChat, titulo, token);
-    console.log(result);
+    const result = yield call (addChat, title, token);
+    console.log("El resultado es: "+result);
     const {id, topico} = result;
     yield put (actions.addChatState(id,oId,topico,token));
     console.log("chat agregado (?)");
