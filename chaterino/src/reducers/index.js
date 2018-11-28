@@ -12,9 +12,7 @@ const reducer = combineReducers({
 
 export default reducer;
 
-export const getAuth = (state) => fromUsers.getAuth(state.users);
-
-export const getUser = (state, id) => fromUsers.getUser(state.users, id);
+export const getToken = (state) => fromUsers.getToken(state.users);
 
 export const getChats = (state) => fromChats.getChats(state.chats);
 

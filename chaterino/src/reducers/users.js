@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import * as types from '../types';
 
-const byId = (state = {}, action) => {
+const user= (state = null, action) => {
   switch (action.type) {
     case types.USER_VERIFIED_DONE:{
       return action.payload.result;
@@ -12,28 +12,11 @@ const byId = (state = {}, action) => {
   }
 }
 
-const auth = (state = false, action) => {
-  switch(action.type){
-    case types.USER_VERIFIED_DONE:{
-      state = true;
-    }
-
-    case types.LOG_OUT:{
-      state = false;
-    }
-
-    default:
-      return state;
-  }
-}
 
 const users = combineReducers({
-  byId,
-  auth,
+  user,
 });
 
 export default users;
 
-export const getUser = (state, id) => state.byId[id];
-
-export const getAuth = (state)=> state.auth;
+export const getToken = (state) => state.user;
