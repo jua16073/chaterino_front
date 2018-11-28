@@ -1,4 +1,4 @@
-import {call, put, takeEvery, takeLatest, take, fork} from 'redux-saga/effects';
+import {call, put, takeEvery, fork} from 'redux-saga/effects';
 import {request, reject} from 'superagent';
 import * as Types from '../types';
 

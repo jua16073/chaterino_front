@@ -5,7 +5,7 @@ import comments, * as fromComments from './comments';
 import users, * as fromUsers from './users';
 
 const reducer = combineReducers({
-  //chats,
+  chats,
   comments,
   users
 });

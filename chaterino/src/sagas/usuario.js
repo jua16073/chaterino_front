@@ -1,8 +1,6 @@
-import {call, put, takeEvery, takeLatest, take, fork} from 'redux-saga/effects';
+import {call, put, takeEvery,fork} from 'redux-saga/effects';
 import * as Types from '../types';
 import * as actions from '../actions';
-import {request, reject} from 'superagent';
-
 
 function addUser (nombre, contra, correo) {
   const url = 'http://127.0.0.1:8000/api/chats/users/create/';
@@ -44,12 +42,13 @@ function* addUserSaga (){
 ///////////////////////////////////////////////////////////////////////////
 //getUser
 
-function getUser ({nombre, contrasena}) {
+function getUser (nombre, contrasena) {
+  console.log("en getUser");
   const url = 'http://127.0.0.1:8000/auth/token/create/';
-  let data = {username:nombre, password:contrasena}
+  let data = {username:nombre, password:contrasena};
   console.log(data);
   let fetchData = {
-    method:'GET',
+    method:'POST',
     body:JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
@@ -63,12 +62,12 @@ function getUser ({nombre, contrasena}) {
 
 
 function* callGetUser (action){
-  const {user, contra} = action.payload;
+  const {nombre, contrasena} = action.payload;
   try{
     console.log("getUser empezado");
-    const result = yield call (getUser, user, contra);
+    const result = yield call (getUser, nombre, contrasena);
     console.log(result);
-    yield put (actions.userVeridied(result));
+    yield put (actions.userVerified(result));
   }
   catch(err){
     console.log("Verifiacion fallo");
@@ -77,10 +76,13 @@ function* callGetUser (action){
 }
 
 function* getUserSaga (){
-  yield* takeEvery(Types.USER_VERIFIED, callGetUser);
+  console.log("getUserSaga");
+  yield takeEvery(Types.USER_VERIFIED, callGetUser);
 }
 
 export default function* root(){
-  yield(addUserSaga);
-  yield(getUserSaga);
+  yield[
+    fork(addUserSaga),
+    fork(getUserSaga),
+  ]
 }
