@@ -4,7 +4,7 @@ import Login from '../Inicio/LogIn';
 import Registrar from '../Inicio/Register';
 import ChatList from '../Principal/ChatsList';
 import Chat from '../VistaChat/Chat';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import './app.css';
 import Home from '../Principal/Home';

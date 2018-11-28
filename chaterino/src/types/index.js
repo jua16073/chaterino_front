@@ -13,3 +13,4 @@ export const CHAT_JOINED = "CHAT_JOINED";
 /////////////////////////////////////////////////////
 export const COMMENTED = "COMMENTED";
 export const COMMENTED_DONE = "COMMENTED_DONE";
+export const COMMENTED_FAIL = "COMMENTED_FAIL";

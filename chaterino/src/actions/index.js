@@ -41,7 +41,7 @@ export const userVerified = (
     token,
   }
 }) 
-
+///////////////////////////////////////////////////////////////////////
 export const createChat = (
   id,
   token,
@@ -92,6 +92,8 @@ export const joinChat = (
   }
 });
 
+
+/////////////////////////////////////////////////////////////////
 export const comment = (
   id,
   idChat,
@@ -105,6 +107,28 @@ export const comment = (
   }
 });
 
-//commentToState
+export const commentToState = (
+  oId, 
+  nId,
+  idChat,
+  body,
+) => ({
+  type: types.COMMENTED_DONE,
+  payload:{
+    oId,
+    nId,
+    idChat,
+    body
+  }
+})
 
-//failedCommentToState
+export const failedCommentToState =(
+  oId,
+  idChat
+) => ({
+  type: types.COMMENTED_FAIL,
+  payload:{
+    oId,
+    idChat
+  }
+})

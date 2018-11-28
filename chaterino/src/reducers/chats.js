@@ -53,6 +53,39 @@ const byId = (state = {}, action) => {
       }
     }
 
+    case types.COMMENTED_DONE:{
+      const {oId, idChat, nId} = action.payload;
+      const chat = state[idChat];
+      const {comments} = chat;
+      const newComments = delete comments[oId]
+      return {
+        ...state,
+        [idChat]:{
+          ...chat,
+          comments:[
+            ...newComments,
+            nId
+          ]
+        }
+      }
+    };
+
+    case types.COMMENTED_DONE:{
+      const {oId, idChat} = action.payload;
+      const chat = state[idChat];
+      const {comments} = chat;
+      const newComments = delete comments[oId]
+      return {
+        ...state,
+        [idChat]:{
+          ...chat,
+          comments:[
+            ...newComments,
+          ]
+        }
+      }
+    };
+
     default:
       return state;
   }
