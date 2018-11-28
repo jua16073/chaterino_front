@@ -1,34 +1,37 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
+import uuid from 'uuid-v4';
 
+import * as selectors from '../../../reducers';
 import * as actions from '../../../actions';
 
-class CommentForm extends React.Component{
+class Commentform extends React.Component{
   render(){
     const {onSubmit} = this.props;
+    const {id} = this.props;
 
-    return (
+    return(
       <Fragment>
-        <input type="text"
-        ref = {node => {this.comentario = node;}}  />
-        <button onClick={
+        <input type="text" ref = {node => {this.comment = node;}} />
+        <button onClick = {
           () => {
             onSubmit(
-              this.comentario.value,
-            )
+              id,
+              this.comment.value,
+            );
+            this.comment.value = "";
           }
-        }
-        >Comentar</button>
+        }>Comentar</button>
       </Fragment>
-    );
+    )
   }
 }
 
 export default connect(
   undefined,
-  dispatch => ({
-    onSubmit(body){
-      dispatch(actions.comment(0, body));
+  (dispatch) => ({
+    onSubmit(id,body){
+      dispatch(actions.comment(uuid(), id, body));
     }
   })
-)(CommentForm);
+)(Commentform);

@@ -94,14 +94,12 @@ export const joinChat = (
 
 export const comment = (
   id,
-  idUsuario,
   idChat,
   body,
 ) => ({
   type: types.COMMENTED,
   payload: {
     id,
-    idUsuario,
     idChat,
     body,
   }

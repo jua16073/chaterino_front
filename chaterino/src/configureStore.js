@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import mainsaga from './sagas';
 import userSaga from './sagas/usuario';
 import chatSaga from './sagas/chat';
+import commentSaga from './sagas/comments';
 const sagaMiddleware = createSagaMiddleware();
 
 
@@ -30,6 +31,7 @@ const configureStore = () => {
   );
   sagaMiddleware.run(userSaga);
   sagaMiddleware.run(chatSaga);
+  //sagaMiddleware.run(commentSaga);
   return store;
 };
 /* eslint-enable */

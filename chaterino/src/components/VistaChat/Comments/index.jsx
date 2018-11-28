@@ -10,8 +10,8 @@ const comments = ({
 }) => (
   <div>
     {
-      comments.length > 0 ?
-      comments.map (({id}) =>
+      comments.length > 0 
+      ? comments.map ((id) =>
        <Comment  key = {id} id ={id} />)
       : <li>Sin comentarios</li>
     }
@@ -20,7 +20,7 @@ const comments = ({
 
 export default connect (
   (state, {id}) => ({
-    comments: selectors.getChat(state,id).comments,
+    comments: selectors.getChat(state, id).comments,
   }),
   undefined
 )(comments);
