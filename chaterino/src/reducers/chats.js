@@ -16,24 +16,20 @@ const byId = (state = {}, action) => {
 
     case types.CHAT_CREATED_DONE:{
       const {nId, oId} = action.payload;
-      let newState = {...state};
-      newState = delete newState[oId];
-      return{
-        ...newState,
-        [nId]: {
-          ...action.payload,
-          comments:[]
-        }
-      }
-    }
+      const newState = {...state};
+      delete newState[oId];
+      newState[nId] = {
+        ...action.payload,
+        comments: [],
+      };
+      return newState;
+    };
     
       case types.CHAT_CREATED_FAILED:{
         const {oId} = action.payload;
         let newState = {...state};
-        newState = delete newState[oId];
-        return {
-          newState,
-        }
+        delete newState[oId];
+        return newState;
       }
 
     case types.COMMENTED:{
@@ -57,20 +53,20 @@ const byId = (state = {}, action) => {
       const {oId, idChat, nId} = action.payload;
       const chat = state[idChat];
       const {comments} = chat;
-      const newComments = delete comments[oId]
+      delete comments[oId]
       return {
         ...state,
         [idChat]:{
           ...chat,
           comments:[
-            ...newComments,
+            ...comments,
             nId
           ]
         }
       }
     };
 
-    case types.COMMENTED_DONE:{
+    case types.COMMENTED_FAIL:{
       const {oId, idChat} = action.payload;
       const chat = state[idChat];
       const {comments} = chat;
@@ -104,7 +100,13 @@ const order = (state = [],action) => {
     case types.CHAT_CREATED_DONE:{
       const {oId, nId} = action.payload;
       let newState = [...state];
-      newState = delete newState[oId];
+      let index;
+      for (let x = 0 ; x<=newState.length; x+=1){
+        if (newState[x]=== oId){
+          index = x;
+        }
+      }
+      newState.splice(index,1);
       return [
         ...newState,
         [nId]
@@ -113,8 +115,14 @@ const order = (state = [],action) => {
 
     case types.CHAT_CREATED_FAILED:{
       const {oId} = action.payload;
-      let newState = [...state];
-      newState = delete newState[oId];
+      const newState = [...state];
+      let index;
+      for (let x = 0 ; x<=newState.length; x+=1){
+        if (newState[x]=== oId){
+          index = x;
+        }
+      }
+      newState.splice(index,1);
       return[
         ...newState,
       ]

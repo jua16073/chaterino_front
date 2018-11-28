@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import * as selectors from '../../../reducers';
 import Chat from '../ChatForShowing';
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
 const Lista = ({chats = []}) => (
   <Fragment>
     <h2>Chats</h2>
