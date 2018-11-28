@@ -43,17 +43,13 @@ export const userVerified = (
 }) 
 
 export const createChat = (
-  id,
-  title,
-  tag,
-  comments,
+  token,
+  title
 ) => ({
   type: types.CHAT_CREATED,
   payload: {
-    id,
-    title,
-    tag,
-    comments,
+    token,
+    title
   }
 });
 

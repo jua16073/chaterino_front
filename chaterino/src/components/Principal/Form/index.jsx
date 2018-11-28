@@ -2,12 +2,14 @@ import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
 import * as actions from '../../../actions';
+import * as selectors from '../../../reducers';
 
 
 class form extends React.Component{
   render() {
     const {onSubmit} = this.props;
-
+    const {token} = this.props;
+    console.log(token);
     return (
       <Fragment>
         <h3>Titulo</h3><br/>
@@ -22,7 +24,7 @@ class form extends React.Component{
           () => {
             onSubmit(
               this.title.value,
-              this.tags.value
+              token
             );
             this.title.value = "";
             this.tags.value = "";
@@ -34,10 +36,12 @@ class form extends React.Component{
 }
 
 export default connect(
-  undefined,
-  dispatch => ({
-    onSubmit(titulo, tag){
-      dispatch(actions.createChat(0,titulo,tag,[]) )
+  state => (
+    state.users
+  ),
+  (dispatch) => ({
+    onSubmit(titulo, tok){
+      dispatch(actions.createChat(titulo,tok));
     }
   })
 )(form);
