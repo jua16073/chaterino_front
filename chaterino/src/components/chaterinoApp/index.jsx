@@ -27,7 +27,7 @@ const chaterinoApp = ({token}) => (
         console.log(token)
       }
       <Route path = "/chats" exact = {true} render = {() => (
-        token != null ? (<Home/>) : (<Redirect to= "/"/>)
+        (token != null && token != "")? (<Home/>) : (<Redirect to= "/"/>)
       )} />  
     </div>
     
