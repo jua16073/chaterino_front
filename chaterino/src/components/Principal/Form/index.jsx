@@ -8,7 +8,7 @@ import * as selectors from '../../../reducers';
 class form extends React.Component{
   render() {
     const {onSubmit} = this.props;
-    const {token} = this.props;
+    const {token} = this.props.token;
     console.log("el token es");
     console.log(token);
     return (
