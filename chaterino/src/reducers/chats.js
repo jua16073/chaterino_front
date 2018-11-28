@@ -15,7 +15,7 @@ const byId = (state = {}, action) => {
     }
 
     case types.CHAT_CREATED_DONE:{
-      const {nId, oId, title, token} = action.payload;
+      const {nId, oId, title, token, uri} = action.payload;
       const newState = {...state};
       delete newState[oId];
       newState[nId] = {
