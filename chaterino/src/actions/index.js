@@ -60,6 +60,7 @@ export const addChatState = (
   oId,
   title,
   token,
+  uri,
 ) => ({
   type: types.CHAT_CREATED_DONE,
   payload:{
@@ -67,6 +68,7 @@ export const addChatState = (
     oId,
     title,
     token,
+    uri
   }
 });
 

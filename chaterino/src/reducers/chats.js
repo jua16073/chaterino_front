@@ -15,22 +15,20 @@ const byId = (state = {}, action) => {
     }
 
     case types.CHAT_CREATED_DONE:{
-      const {nId, oId, title, token} = action.payload;
-      const newState = {...state};
+      const {nId, oId} = action.payload;
+      let newState = {...state};
       newState = delete newState[oId];
       return{
         ...newState,
         [nId]: {
-          id: nId,
-          title: title,
-          token: token,
+          ...action.payload
         }
         }
       }
     
       case types.CHAT_CREATED_FAILED:{
         const {oId} = action.payload;
-        const newState = {...state};
+        let newState = {...state};
         newState = delete newState[oId];
         return {
           newState,
@@ -71,7 +69,7 @@ const order = (state = [],action) => {
 
     case types.CHAT_CREATED_DONE:{
       const {oId, nId} = action.payload;
-      const newState = {...state};
+      let newState = {...state};
       newState = delete newState[oId];
       return [
         ...newState,
@@ -81,7 +79,7 @@ const order = (state = [],action) => {
 
     case types.CHAT_CREATED_FAILED:{
       const {oId} = action.payload;
-      const newState = {...state};
+      let newState = {...state};
       newState = delete newState[oId];
       return[
         ...newState,

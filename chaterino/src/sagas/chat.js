@@ -24,8 +24,6 @@ function addChat (titulo, key) {
   return pls;
 }
 
-//dueno, url , topico, id
-
 function* callAddChat (action){
   const {id,token, title} = action.payload;
   const oId = id;
@@ -33,8 +31,11 @@ function* callAddChat (action){
     const result = yield call (addChat, title, token);
     console.log("El resultado es: ");
     console.log(result);
-    const {id, topico} = result;
-    yield put (actions.addChatState(id,oId,topico,token));
+    const {id, topico, uri} = result;
+    console.log(id);
+    console.log(topico);
+    console.log(uri);
+    yield put (actions.addChatState(id,oId,topico,token, uri));
     console.log("chat agregado (?)");
   }
   catch(err){
