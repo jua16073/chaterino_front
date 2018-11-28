@@ -14,15 +14,20 @@ import './app.css';
 import Home from '../Principal/Home';
 
 
-const chaterinoApp = ({auth}) => (
+const chaterinoApp = ({token}) => (
   <Fragment>
     <div className="app">
       <Route exact path="/" component={Login}/>
       <Route path = "/register" component={Registrar}/>
-      <Route path = "/chats" exact = {true} component= {Home}/>
       <Route path = "/chats/:id" component={Chat}/>
+      {
+        console.log("El token es")
+      }
+      {
+        console.log(token)
+      }
       <Route path = "/chats" exact = {true} render = {() => (
-        auth != null ? (<Home/>) : (<Redirect to= "/"/>)
+        token != null ? (<Home/>) : (<Redirect to= "/"/>)
       )} />  
     </div>
     
