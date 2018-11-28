@@ -4,7 +4,7 @@ import * as types from '../types';
 const byId = (state = {}, action) => {
   switch (action.type) {
     case types.USER_VERIFIED_DONE:{
-      return action.result;
+      return action.payload.result;
     }
 
     default:

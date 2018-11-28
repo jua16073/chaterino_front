@@ -14,8 +14,6 @@ const byId = (state = {}, action) => {
 
     default:
       return state;
-
-
   }
 }
 
