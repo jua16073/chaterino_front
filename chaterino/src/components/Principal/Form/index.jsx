@@ -8,7 +8,7 @@ import * as selectors from '../../../reducers';
 class form extends React.Component{
   render() {
     const {onSubmit} = this.props;
-    const {token} = this.props.state.users;
+    const {token} = this.props;
     console.log("el token es");
     console.log(token);
     return (
@@ -38,7 +38,7 @@ class form extends React.Component{
 
 export default connect(
   state => (
-    state
+    selectors.getToken(state)
   ),
   (dispatch) => ({
     onSubmit(titulo, tok){
