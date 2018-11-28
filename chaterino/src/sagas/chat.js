@@ -9,8 +9,6 @@ function addChat (titulo, key) {
   let dataToken =  "JWT "+token;
   console.log("el token es: ");
   console.log(token);
-  console.log("la data a mandar es:");
-  console.log(data);
   let fetchData = {
     method:'POST',
     body:JSON.stringify(dataTopico),
