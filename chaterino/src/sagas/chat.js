@@ -5,7 +5,7 @@ import * as actions from '../actions';
 function addChat (titulo, key) {
   const {token} = key;
   const url = 'http://127.0.0.1:8000/api/chats/';
-  let data = {topico:titulo, Authorization: "Token "+token}
+  let data = {topico:titulo, Authorization: "JWT "+token}
   console.log("el token es: ");
   console.log(token);
   console.log("la data a mandar es:");
