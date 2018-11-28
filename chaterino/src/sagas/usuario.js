@@ -44,7 +44,7 @@ function* addUserSaga (){
 
 function getUser (nombre, contrasena) {
   console.log("en getUser");
-  const url = 'http://127.0.0.1:8000/auth/token/create/';
+  const url = 'http://127.0.0.1:8000/api-token-auth/';
   let data = {username:nombre, password:contrasena};
   console.log(data);
   let fetchData = {
